@@ -1,0 +1,248 @@
+<!-- 코드 작성자 : 에르덴 척트 -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+{% block css %}
+<link rel="stylesheet" href="/write.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+<div class="board_wrap">
+    <div class="board_title">
+        <strong>판매 게시물 작성하기</strong>
+
+    </div>
+
+
+    <div class="board_write_wrap">
+        <div class="board_write">
+
+            <form action="/write/search" target="_self" method="post">
+                <div class="info">
+                    <dl>
+                        <dt>책 정보</dt>
+                        <dd><input type="text" name="query" placeholder="ISBN,책제목 검색..."></dd>
+                        <dd><button type="submit"><i class="fa fa-search" style="font-size:35px;" button></i></dd><br>
+                        <dt></dt>
+                    </dl>
+                </div>
+            </form>
+
+
+            <form action="/write" method="post" enctype="multipart/form-data">
+                <div class="title">
+                    <dt><strong>제목</strong></dt>
+                </div>
+                <div class="cont">
+                    <textarea name="postTitle" placeholder="제목 입력"></textarea>
+                </div>
+                <div class="title">
+                    <dt><strong>이미지 등록</strong></dt>
+                    <dl>
+
+                        <img src="1.jpg" alt="Trulli" width="250px" height="300px"><br>
+                    </dl>
+
+                    <input type="file" id="myFile" name="filename">
+
+
+
+                </div>
+
+                <div class="info">
+                    <br>
+                    <dt><strong> 설명 작성</strong></dt>
+                </div>
+                <div class="cont">
+                    <textarea name="postContent" placeholder="내용 입력"></textarea>
+                </div>
+
+                <div class="info">
+                    <dl>
+                        <dt><strong>판매 옵션 설정</strong></dt><br>
+
+                        <dt>가격:</dt>
+                        <dd><input type="text" name="postPrice" placeholder="입력"></dd><br>
+                        <dt>거래 지역:</dt>
+                        <dd><input type="text" name="postUniversity" placeholder="입력"></dd><br>
+                        <dt>책 종류:</dt>
+                        <dd>
+                            <select class="tt" padding:10px;>
+                                <option value="">전공책</option>
+                                <option value="">교양책</option>
+                            </select>
+                        </dd><br>
+
+
+
+
+                        <dt>배송 여부:</dt>
+                        <dd><input type="checkbox" class="form-check-input" id="check1" name="option1" value="something"
+                                checked></dd><br>
+
+
+
+
+                </div>
+
+
+
+        </div>
+
+
+        </dl>
+
+    </div>
+
+    <div>
+
+    </div>
+    <h2>대학 장터</h2>
+
+
+    <table style="width:100%">
+
+
+        <tr>
+
+
+        </tr>
+        <tr>
+            <th>과목명</th>
+            <td><input name="subject" type="text" placeholder="입력" /></td>
+            <th>교수님명</th>
+            <td><input name="professor" type="text" placeholder="입력" /></td>
+            <th>사용년도</th>
+            <td><input name="year" type="text" placeholder="입력" /></td>
+        </tr>
+        <tr>
+            <th>사용학기</th>
+            <td><input name="semester" type="text" placeholder="입력" /></td>
+            <th>학점</th>
+            <td><input name="grades" type="text" placeholder="입력" /></td>
+        </tr>
+    </table>
+    <h2>품질 판정 가이드</h2>
+
+
+
+    <table style="width:100%" height="200px">
+        <tr>
+            <th>품질등급</th>
+            <th>한성대</th>
+            <th>표지</th>
+            <th>책등/책배</th>
+            <th>내부/제봉상태</th>
+        </tr>
+
+        <tr>
+            <td>
+                <dd> <input type="radio" id="age1" name="postStatus" value="최상">
+                    <label for="age1">최상</label>
+                </dd>
+            </td>
+            <td></i>새것에 가까움<br>
+            </td>
+            <td><i class="fa fa-dot-circle-o"></i>변색 없음<br>
+                <i class="fa fa-dot-circle-o"></i>찢어진 흔적 없음<br>
+                <i class="fa fa-dot-circle-o"></i>닳은 흔적 없음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음음<br>
+                <i class="fa fa-dot-circle-o"></i>얼록 있음<br>
+            </td>
+
+            <td><i class="fa fa-dot-circle-o"></i>변색 없음<br>
+                <i class="fa fa-dot-circle-o"></i>닳은 흔적 없음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음<br>
+                <i class="fa fa-dot-circle-o"></i>얼록 없음음<br>
+            </td>
+
+            <td><i class="fa fa-dot-circle-o"></i>변색 없음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음<br>
+                <i class="fa fa-dot-circle-o"></i>변형 없음<br>
+                <i class="fa fa-dot-circle-o"></i>얼록 없음<br>
+                <i class="fa fa-dot-circle-o"></i>제본 탈착 없음<br>
+            </td>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <dd> <input type="radio" id="age2" name="postStatus" value="상">
+                    <label for="age2">상</label><br>
+                </dd>
+            </td>
+            <td>
+                약간 사용감 있음<br>
+            </td>
+            <td><i class="fa fa-dot-circle-o"></i>희미한 변색이나 작은 얼룩이 있음<br>
+                <i class="fa fa-dot-circle-o"></i>찢어진 흔적 없음<br>
+                <i class="fa fa-dot-circle-o"></i>약간의 모서리 해짐<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음<br>
+                <i class="fa fa-dot-circle-o"></i>도서 겉표지 있음<br>
+            </td>
+
+            <td><i class="fa fa-dot-circle-o"></i>희미한 변색이나 작은 얼룩이 있음<br>
+                <i class="fa fa-dot-circle-o"></i>약간의 닳은 흔적 있음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음<br>
+            </td>
+            <td><i class="fa fa-dot-circle-o"></i>변색 없음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 없음<br>
+                <i class="fa fa-dot-circle-o"></i>변형 없음<br>
+                <i class="fa fa-dot-circle-o"></i>아주 약간의 접힌 흔적 있음<br>
+                <i class="fa fa-dot-circle-o"></i>얼울 없음<br>
+                <i class="fa fa-dot-circle-o"></i>제본 탈착 없음<br>
+            </td>
+
+        </tr>
+        <tr>
+            <td>
+                <dd><input type="radio" id="age3" name="postStatus" value="중">
+                    <label for="age3">중</label>
+                </dd>
+            </td>
+            <td>
+                사용감이 많음<br></td>
+            <td><i class="fa fa-dot-circle-o"></i>전체적인 변색<br>
+                <i class="fa fa-dot-circle-o"></i>모서리 해짐 있음<br>
+                <i class="fa fa-dot-circle-o"></i>2cm 이하의 찢어짐<br>
+                <i class="fa fa-dot-circle-o"></i>오염이 있음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 있음<br>
+                <i class="fa fa-dot-circle-o"></i>도서 겉표지 없음<br>
+            </td>
+            <td><i class="fa fa-dot-circle-o"></i>전체적인 변색<br>
+                <i class="fa fa-dot-circle-o"></i>모서리 해짐 있음<br>
+                <i class="fa fa-dot-circle-o"></i>오염 있음<br>
+                <i class="fa fa-dot-circle-o"></i>낙서 있음(이름 포함)<br>
+            </td>
+            <td><i class="fa fa-dot-circle-o"></i>변색 없음<br>
+                <i class="fa fa-dot-circle-o"></i>5쪽 이하의 필기 및 풀이 또는 밑줄 있음<br>
+                <i class="fa fa-dot-circle-o"></i>2cm 찢어짐 있음<br>
+                <i class="fa fa-dot-circle-o"></i>얼룩 및 오염이 있음<br>
+                <i class="fa fa-dot-circle-o"></i>제본 탈착 없음<br>
+                <i class="fa fa-dot-circle-o"></i> 본문 읽기에 지장 없는 부록 없음<br>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+
+
+
+
+<div class="bt_wrap">
+    <button b>판매글 작성</button>
+    <a href="#">취소</a>
+</div>
+
+</div>
+</div>
+</form>
+
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

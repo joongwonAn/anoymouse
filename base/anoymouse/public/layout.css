@@ -1,0 +1,651 @@
+/**
+ * ./public/layout.css
+ * 
+ * 코드 작성자 : 안중원
+ */
+
+/* 브라우저 뷰의 너비 1200px 이하로 inner의 크기 제한*/
+/*COMMON*/ 
+@media screen and (max-width:1200px){ 
+    .btn_inner{width:1200px;} 
+    .inner{width:1100px;}
+}
+
+.inner{
+    max-width:1100px;
+    margin: 0 auto;
+    box-sizing:border-box;
+}
+body{
+    font-family: 'SF Pro Display','AppleSDGothicNeo','Malgun Gothic','\B9D1\C740 \ACE0\B515','\B3CB\C6C0',dotum,sans-serif;
+}
+
+.profile_txt_box p span>i{
+    font-size:15px;
+}
+
+
+/* HEADER */
+#header{
+    position:fixed;
+    width:100%;
+    height:90px;
+    background-color: white;
+    z-index:99;
+}
+#header a{
+    text-decoration: none;
+}
+/*로고, 검색, 메신저, 알림, 사용자 설정 포함한 영역*/
+.top_header{
+    height:90px;
+    position:relative;
+}
+/*로고 + 검색*/
+.top_header .left_header{
+    display:flex;
+    align-items: center;
+    float:left;
+    height:100%;
+
+}
+/*로고*/
+.top_header .left_header #logo{
+    color : #042D6F;
+    font-weight:800;
+    font-size:30px;
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    flex-direction: row;
+}
+.logo_img{
+    width: 60px;
+    height: 80px;
+    margin-right: 10px;
+}
+/*검색 박스*/
+.top_header .left_header .search_box{
+    height:40px;
+    width: 220px;
+    box-sizing: border-box;
+    display:flex;
+    justify-content: center;
+    align-items:center;
+    border-radius: 25px;
+    border: 1px solid rgb(216, 216, 216);
+    margin-left: 20px;
+}
+/*검색 내용 입력 칸*/
+.top_header #inputSearch{
+    width:150px;
+    height:30px;
+    border:none;
+}
+/*검색 내용 입력 칸에 포커스*/
+.top_header #inputSearch:focus{
+    outline: none;
+}
+/*검색 버튼*/
+.top_header #search_btn{
+    border:none;
+    font-size: 15px;
+    box-sizing: border-box;
+    width:30px;
+    background-color: transparent;
+}
+/*검색 아이콘*/
+.top_header #search_btn i{
+    color:rgba(4, 45, 111, .7);
+    padding:10px 13px;
+}
+
+/* 로그인 전 */
+/*로그인 전의 헤더 상단 오른쪽 영역*/
+.top_header .before_login{
+    float:right;
+    display: flex;
+    height:100%;
+    align-items: center;
+    justify-content: center;
+}
+/*로그인 전 로그인, 회원가입 버튼*/
+.top_header .before_login li{
+    width: 80px;
+    height:60px;
+    box-sizing: border-box;
+    text-align: center;
+    cursor: pointer;
+}
+/*로그인 전의 문구*/
+.top_header .before_login li p{
+    /* padding:10px; */
+    font-size:14px;
+    color:black;
+    font-weight: 700;
+    line-height: 60px;
+}
+/* 로그인 후 */
+/* 로그인 후 헤더*/
+.top_header .after_login{
+    float:right;
+    display:flex;
+    align-items:center;
+    height:100%;
+}
+/*로그인 후의 헤더 상단 오른쪽 영역 안의 메신저, 알림, 사용자 설정*/
+.top_header .after_login li{
+    display:flex;
+    justify-content: center;
+    align-items:center;
+}
+/*로그인 후 아이콘 영역*/
+.top_header .after_login .icon_item{
+    width: 32px;
+    height:60px;
+    box-sizing: border-box;
+    margin-right:5px;
+}
+/*로그인 후 아이콘*/
+.top_header .after_login li .icon{
+    padding:12px;
+    font-size:20px;
+    font-weight: 700;
+    color:rgb(150, 150, 150);
+}
+/*로그인 후 아이콘 hover시*/
+.top_header .after_login li .icon:hover{
+    color:rgb(100,100,100);
+}
+/*로그인 후 프로필 클릭 버튼*/
+.top_header .after_login li .click_profile{
+    font-size:12px;
+    display:flex;
+    justify-content: flex-end;
+    align-items:center;
+    color:rgb(127, 127, 127);
+    margin-left:5px;
+    border:none;
+    background-color: transparent;
+    cursor:pointer;
+
+}
+/*로그인 후 프로필 사진*/
+.top_header .after_login li img{
+    width:30px;
+    height:30px;
+    border-radius: 50%;
+    margin-right:5px;
+}
+/*로그인 후, 프로필 설정 클릭 시 사용자 설정 list를 숨기기 위한 아이콘 */
+.top_header .after_login button #up_icon{
+    display:none;
+    /* margin-left:5px; */
+}
+/* top_header css 끝*/
+
+/* 내 정보 설정 */
+.setting_area{
+    width:150px;
+    box-shadow: 1px 1px 10px rgba(0,0,0,.15);
+    border-radius:2px;
+    box-sizing: border-box;
+    position:absolute;
+    display:none;
+    background-color: rgb(255,255,255);
+    font-size:15px;
+    margin-top: 60px;
+    margin-left:950px;
+    z-index:1;
+}
+/* 사용자 설정 리스트 */
+.setting_area li{
+    width:140px;
+    height:30px;
+    margin:5px;
+    box-sizing: border-box;
+}
+/* 사용자 설정 리스트 마우스 오버시*/
+.setting_area li:hover{
+    background-color: rgba(156, 156, 156,.1);
+
+}
+/* 사용자 설정 리스트 클릭 영역 */
+.setting_area a{
+    padding-left:10px;
+    height:30px;
+    line-height:30px;
+    display: block;
+    font-size:13px;
+    color:rgb(100,100,100); 
+}
+
+/*-----    CONTENT    -------*/
+#container{
+    padding-top:80px;
+}
+/* 메인 메뉴 + 슬라이드 */
+.main_section{
+    position:relative;
+    width: 100%;
+    height:540px;
+    margin: 0 auto;
+}
+/* 메인 배경 */
+.back_main{
+    position: absolute;
+    width:100%;
+    z-index:-99;
+    margin-top: -100px;
+}
+/* 메인 배경 이미지 */
+.back_main .main_img_1{  
+    width:100%;  
+    height:500px;
+    object-fit:cover;
+}
+/* 메인 메뉴 중앙 정렬*/
+.main_menu{
+    position: relative;
+    height:100px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+/* 메인 메뉴 ul */
+ .main_menu .menu_list{
+    width:500px;
+    display:flex;
+}
+/* 메인 메뉴 아이템 중앙 정렬 */
+.main_menu .menu_item{
+    margin:0 auto;
+}
+/* 메인 메뉴 아이템 클릭 영역 */
+ .main_menu .menu_item a{
+    font-size: 30px;
+    font-weight:bold;
+    color: #ADC5E7;
+    text-decoration: none;
+} 
+/* index에서 default 메뉴 아이템 색 지정 */
+.main_menu .menu_item .home_link{
+    color: #042D6F;
+}
+
+/* 배너 이미지 슬라이드 */
+.banner_slide{
+    margin-top:20px;
+    background-color: #F0F5FB;
+    width:650px;
+    height:400px;
+    border-radius: 10px;
+    float:left;
+    overflow: hidden;
+}
+/* 배너 이미지 리스트 */
+.banner_slide .banner_img_list{
+    display: flex;
+    width:650px;
+    height:400px;
+}
+/* 배너 이미지 */
+.banner_img {
+    border-radius:10px;
+    width:650px;
+    height:400px;
+    object-fit:cover;
+}
+/* 배너 문구 담은 영역 */
+.banner_txt_box{
+    float:right;
+    margin-right:60px;
+    margin-top:80px;
+}
+/* 첫번째 배너 문구만 보이게 설정*/
+.banner_txt_box .txt_1{
+    display: block;
+}
+.banner_txt_box .txt_2{
+    display: none;
+}
+.banner_txt_box .txt_3{
+    display: none;
+}
+/* 배너 문구 중 큰 문구 */
+.banner_txt_box .big_txt{
+    width:340px;
+    font-size:45px;
+    font-weight:700;
+    color:black;
+    letter-spacing: -1px;
+}
+/* 배너 문구 중 작은 문구 */
+.banner_txt_box .small_txt{
+    width:350px;
+    margin-top:25px;
+    font-size:17px;
+    font-weight:500;
+    color:black;
+    opacity: 0.7;
+    letter-spacing: -1px;
+}
+
+/* 슬라이드 페이지 넘김 및 표시 영역 */
+.slide_pagination{
+    float:right;
+    margin-top:80px;
+    margin-right:50px;
+    width:370px;
+    height:30px;
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+}
+/* 슬라이드 번호(현재 + 전체) */
+.slide_num{
+    width:150px;
+}
+/* 현재 슬라이드 번호 */
+.slide_num #now_num{
+    color:rgb(255,255,255);
+    font-weight: 600;
+}
+/* 전체 슬라이드 번호 */
+.slide_num #total_num{
+    color:rgba(255,255,255,.95);
+    font-weight: 500;
+}
+/* 슬라이드 넘김 로딩바 영역 */
+.loading_bar{
+    width:240px;
+}
+/* 슬라이드 넘김 에니메이션 적용될 로딩바 */
+.loading_bar .bar{
+    width: 0px;
+    height: 2px;
+    background-color: #fff;
+    z-index: 2;
+    float: left;
+}
+/* 슬라이드 넘김 로딩바 배경색 지정 */
+.bar_background {
+    width: 240px;
+    height: 2px;
+    background-color: rgba(0,0,0,.5);
+    z-index: 1;
+}
+/* ?? */
+@keyframes widthUp {
+    0% {
+        width: 0;
+    }
+    100% {
+        width : 240px;
+    }
+}
+/* 슬라이드 넘김 버튼 영역 */
+.pagination_btn{
+    width:150px;
+}
+/* 슬라이드 넘김 버튼 */
+.pagination_btn .p_btn{
+    display: inline;
+    color:rgba(0,0,0,.5);
+    background-color: rgba(0,0,0,0);
+    border:none;    
+    font-size:13px;
+    margin: 0 4px;
+}
+/* 슬라이드 넘김 버튼 마우스 오버시 */
+.pagination_btn .p_btn:hover{
+    cursor:pointer;
+}
+
+/* -----  콘텐츠 공통 속성 ----- */
+
+/* 슬라이드 콘텐츠의 제목 + 더보기*/
+.container_content_title{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+/* 슬라이드 콘텐츠의 제목 */
+.container_content_title .big_title{
+    font-size: 28px;
+    font-weight: 600;
+    letter-spacing: -1px;
+    color: #484848;
+    /* padding:0; */
+}
+/* 슬라이드 콘텐츠의 더보기*/
+.container_content_title a{
+    font-weight: 600;
+    color: rgb(162, 162, 162);
+    text-decoration: none;
+    font-size:15px;
+    letter-spacing: -.5px;
+    margin-right: 20px;
+}
+/* 슬라이드 콘텐츠의 더보기 마우스 오버시*/
+.container_content_title a:hover{
+    color: rgb(202, 202, 202);
+}
+/* 버튼이 들어간 inner 영역 설정 */
+.btn_inner{
+    max-width:1200px;
+    margin: 0 auto;
+    box-sizing:border-box;
+    position: relative;
+}
+
+/* 콘텐츠 내용 박스 */
+.content_box{
+    width:1100px;
+    margin-top:20px;
+}
+/* 콘텐츠 박스 안의 카드 */
+.content_item{
+    width: 265px;
+    /* height: 325px; */
+    margin:0 5px;
+    border: 1px solid rgba(0,0,0,.2);
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+/* 콘텐츠 카드 안의 a 요소 css 초기화 설정 */
+.content_item>a{
+    text-decoration: none;
+    color:#000;
+}
+/* --- 콘텐츠 공통 속성 끝 --- */
+
+.registered_now_box{
+    width:1200px;
+    margin-bottom:40px;
+}
+.all_book_box {
+    width:1200px;
+    margin-top:40px;
+}
+/* book 리스트 */
+.registered_now_list{
+    display:flex;
+    margin-left:-14px;
+    align-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow: hidden;
+}
+/* book 카드 */
+.registered_now_item{
+    position:relative;
+    /* height: 325px; */
+    margin-top: 10px;
+}
+/* 카드 클릭 영역 */
+.a_box{
+    width: 265px;
+    /* height: 325px; */
+}
+/* book 이미지 */
+.registered_now_item img{
+    width: 180px;
+    height: 210px;
+    border-radius: 5px 5px 0px 0px;
+    display: block;
+    margin: 0px auto;
+}
+/* book 카드 문구 */
+.registered_now_item p{
+    margin-left:8px;
+    margin-right:8px;
+}
+/* book 게시글 제목 */
+.registered_now_item p:nth-child(2){
+    height:40px;
+    margin-top:20px;
+    font-weight:600;
+    font-size:15px;
+    line-height:18px;
+    letter-spacing: -.2px;
+}
+.registered_now_item p:nth-child(2)>span{
+    color: #042D6F;
+}
+/* book 게시글 가격 */
+.registered_now_item p:nth-child(3){
+    font-size:13px;
+    height:17px;
+}
+.registered_now_item p:nth-child(3)>span{
+    font-size: 14px;
+    color: #F03C07;
+}
+/* book 게시글 대학-학부 */
+.registered_now_item p:nth-child(4){
+    font-size: 13px;
+    height:17px;
+}
+/* book 게시글 관심, 채팅 count */
+.registered_now_item p:nth-child(5){
+    font-size:12px;
+    /* height:17px; */
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #484848;
+}
+
+/* popup */
+#login_popup, #join_popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1;
+  }
+  #login_popup.hide, #join_popup.hide {
+    display: none;
+  }
+  #login_popup.has-filter, #join_popup.has-filter {
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+  }
+  #login-form {
+    width: 40%;
+    min-width: 400px;
+    height: 250px;
+    margin-top: 80px;
+    margin-left: 30%;
+    border-radius: 7px;
+    overflow: hidden;
+    background-color:white;
+  }
+  #join-form {
+    width: 40%;
+    min-width: 400px;
+    /* height: 550px; */
+    margin-top: 80px;
+    margin-left: 30%;
+    border-radius: 7px;
+    overflow: hidden;
+    background-color:white;
+  }
+  #login-form p, #join-form p {
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 15px;
+  }
+  .fa-xmark {
+    font-size: 50px;
+    color: rgba(72, 72, 72, .3);
+    margin-top: -30px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+ .popup_input_box {
+    margin: 20px;
+    height: 100px;
+ }
+ .popup_input {
+     float: left;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     width: 75%;
+ }
+ .popup_input input {
+    font-size: 15px;
+     height: 45px;
+ }
+ .popup_btn {
+     float: right;
+ }
+ .popup_btn button {
+     font-size: 15px;
+     width: 120px;
+     height: 100px;
+     border: none;
+     text-decoration: none;
+     cursor: pointer;
+     border-radius: 4px;
+     background-color: #042D6F;
+     color: white;
+ }
+.input-group {
+    margin-bottom: 15px;
+    margin-left: 20px;
+    margin-right: 20px;
+    /* text-align: center; */
+    /* padding: 15px; */
+}
+.input-group label {
+    width: 20%;
+    display: inline-block;
+    font-size: 20px;
+}
+.input-group input {
+    width: 75%;
+    height: 30px;
+}
+
+.join_btn {
+    font-size: 15px;
+    width: 50%;
+    height: 50px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    margin-left: 25%;
+    border: none;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    background-color: #042D6F;
+    color: white;
+}

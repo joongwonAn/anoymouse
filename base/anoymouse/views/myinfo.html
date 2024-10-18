@@ -1,0 +1,51 @@
+<!-- 코드 작성자 : 안중원 -->
+
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/myinfo.css">
+{% endblock %}
+
+{% block content %}
+    <!-- 모든 교재 -->
+    <div class="all_book_box btn_inner">
+      <!--콘텐츠 헤더-->
+      <div class="container_content_title inner">
+        <h1 class="big_title"> 내정보 </h1>
+      </div>
+
+      <div class="inner">
+        <div class="container">
+          <form id="nick-form">
+            <div class="popup_txt_box">
+              <p> <span> {{user.userNickname}}</span>님의 <span> 닉네임 </span> 수정 </p>
+              <input class="nick" id="newnick" type="text" placeholder="새로운 닉네임">
+            </div>
+            <div class="popup_btn_box">
+              <button class="registerbtn" type="submit"> 변경 </button>
+            </div>
+          </form>
+
+          <form id="pw-form">
+            <div class="popup_txt_box">
+              <p> <span> {{user.userNickname}}</span>님의 <span> 비밀번호 </span> 수정 </p>
+              <input class="pw"t id="nowpw" type="password" placeholder="현재 비밀번호">
+              <div></div>
+              <input class="pw" id="newpw" type="password" placeholder="새 비밀번호">
+              <input class="pw" id="confirmnewpw" type="password" placeholder="새 비밀번호 확인">
+            </div>
+            <div class="popup_btn_box">
+              <button class="registerbtn" type="submit"> 변경 </button>
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/myinfo.js"></script>
+{% endblock %}

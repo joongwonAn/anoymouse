@@ -1,0 +1,168 @@
+<!-- 코드 작성자 : 에르덴 척트 -->
+
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/university.css">
+{% endblock %}
+
+{% block content %}
+
+<div class="all_book_box btn_inner">
+    <!--콘텐츠 헤더-->
+    <div class="container_content_title inner">
+        <h1 class="big_title"><i class="fa fa-dot-circle-o">대학교 찾기</i></h2>
+    </div>
+
+    <div class="inner">
+        <div class="tab">
+            <button class="tablinks" onclick="openCity(event, '강원')">강원</button>
+            <button class="tablinks" onclick="openCity(event, '광주/전남')">광주/전남</button>
+            <button class="tablinks" onclick="openCity(event, '대구/경북')">대구/충남</button>
+            <button class="tablinks" onclick="openCity(event, '대전/충남')">대전/경북</button>
+            <button class="tablinks" onclick="openCity(event, '부산/경남')">부산/경남</button>
+            <button class="tablinks" onclick="openCity(event, '서울')">서울</button>
+            <button class="tablinks" onclick="openCity(event, '인천/경기')">인천/경기</button>
+            <button class="tablinks" onclick="openCity(event, '전북')">전북</button>
+            <button class="tablinks" onclick="openCity(event, '제주')">제주</button>
+            <button class="tablinks" onclick="openCity(event, '충북')">충북</button>
+        </div>
+
+        <div id="강원" class="tabcontent">
+
+            <a href="/university/other">강릉원주대학교(강릉)</a><br>
+            <a href="/university/other">강릉원주대학교(원주)</a><br>
+            <a href="/university/other">강원대학교</a><br>
+            <a href="/university/other">강원대학교(삼척)</a><br>
+            <a href="/university/other">경동대학교</a><br>
+
+
+        </div>
+
+        <div id="광주/전남" class="tabcontent">
+
+            <a href="/university/other">광신대학교</a><br>
+            <a href="/university/other">광주가톨릭대학교</a><br>
+            <a href="/university/other">광주가톨릭대학교</a><br>
+            <a href="/university/other">광주대학교</a><br>
+            <a href="/university/other">광주여자대학교</a><br>
+        </div>
+
+        <div id="대구/경북" class="tabcontent">
+
+            <a href="/university/other">가야대학교(고령)</a><br>
+            <a href="/university/other">경북대학교</a><br>
+            <a href="/university/other">경북대학교 (상주)</a><br>
+            <a href="/university/other">경북외국어대학교</a><br>
+            <a href="/university/other">경운대학교</a><br>
+
+        </div>
+        <div id="부산/경남" class="tabcontent">
+
+            <a href="/university/other">가야대학교</a><br>
+            <a href="/university/other">경남과학기술대학교</a><br>
+            <a href="/university/other">경남대학교</a><br>
+            <a href="/university/other">경남정보대학교 </a><br>
+            <a href="/university/other">경상대학교</a><br>
+        </div>
+        <div id="대전/충남" class="tabcontent">
+            <a href="/university/other">건양대학교(대전)</a><br>
+            <a href="/university/other">건양대학교(충남)</a><br>
+            <a href="/university/other">공주교육대학교</a><br>
+            <a href="/university/other">공주대학교(공주옥룡)</a><br>
+            <a href="/university/other">공주대학교(예산)</a><br>
+
+
+
+
+        </div>
+
+
+        <div id="서울" class="tabcontent">
+
+            <a href="/university/seoul">서울대학교</a><br>
+            <a href="/university/hansung">한성대학교</a><br>
+            <a href="/university/other">국민대학교</a><br>
+            <a href="/university/other">고려대학교</a><br>
+            <a href="/university/other">연세대학교</a><br>
+        </div>
+
+
+    </div>
+    <div id="인천/경기" class="tabcontent">
+
+        <a href="/university/other">가천대학교(글로벌)</a><br>
+        <a href="/university/other">가천대학교(메디컬)</a><br>
+        <a href="/university/other">가톨릭대학교</a><br>
+        <a href="/university/other">강남대학교</a><br>
+        <a href="/university/other">경기과학기술대학교</a><br>
+
+
+    </div>
+
+    <div id="전북" class="tabcontent">
+
+        <a href="/university/other">군산대학교</a><br>
+        <a href="/university/other">서남대학교(남원)</a><br>
+        <a href="/university/other">예수대학교</a><br>
+        <a href="/university/other">예원예술대학교</a><br>
+        <a href="/university/other">우석대학교</a><br>
+
+    </div>
+    <div id="제주" class="tabcontent">
+
+        <a href="/university/other">제주국제대학교</a><br>
+        <a href="/university/other">제주대학교</a><br>
+        <a href="/university/other">제주대학교(사라)</a><br>
+
+    </div>
+    <div id="충북" class="tabcontent">
+
+        <a href="/university/other">건국대학교(글로컬)</a><br>
+        <a href="/university/other">고려대학교(세종)</a><br>
+        <a href="/university/other">극동대학교</a><br>
+        <a href="/university/other">꽃동네대학교</a><br>
+        <a href="/university/other">서원대학교</a><br>
+
+    </div>
+
+    <div class="content_box">
+        <p>{{title}}</p> 
+        <ul class="registered_now_list">
+            {% for post in posts %}
+            
+            <li class="content_item registered_now_item">
+                <a href="/detail/{{post.id}}">
+                    <div class="a_box">
+                        <img src="/img/book_DataStructures.jpg">
+                        <p> <span>[{{post.postStatus}}]</span> {{post.postTitle}}</p>
+                        <p> 29000원 → <span>{{post.postPrice}}원(59%)</span></p>
+                        <p> {{post.User.university}} - {{post.User.department}} </p>
+                    </div>
+                </a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(cityName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+{% endblock %}

@@ -1,0 +1,313 @@
+<!-- 코드 작성자 : 안중원 -->
+
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="/detail.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css"
+    integrity="sha384-HzLeBuhoNPvSl5KYnjx0BT+WB0QEEqLprO+NBkkk5gbc67FTaL7XIGa2w1L0Xbgc" crossorigin="anonymous">
+{% endblock %}
+
+{% block content %}
+<div class="detail_box btn_inner">
+    <div class="top_section">
+        <div class="date_box">
+            <span class="small_text">등록일 : {{ post.createdAt }} </span>
+        </div>
+        <div class="big_title_box">
+            <ul>
+                <li class="title_text">{{ post.postTitle }}</li>
+                <li class="small_text">
+                    
+                </li>
+            </ul>
+        </div>
+    </div>
+    <hr class="title_hr">   
+    <div class="main_section">
+        <div class="book_imgandinfo_box">
+            <div class="book_img_box">
+                <img class="book_img" src="{{post.img}}">
+
+                <img class="user_book_img" src="/logoimg/main_1.png" alt="user-img">
+                <img class="user_book_img" src="/logoimg/main_1.png" alt="user-img">
+                <img class="user_book_img" src="/logoimg/main_1.png" alt="user-img">
+
+            </div>
+
+            <div id="img_popup" class="hide">
+                <div>
+                    <i onclick="closePopupIMG()" class="fa fa-xmark"></i>
+                    <img class="user_book_img" src="/logoimg/main_1.png" alt="user-img">
+                </div>
+            </div>
+
+            <div class="book_info_box">
+                <div class="book_info_list">
+                    <ul>
+                        <li class="book_info_li">
+                            <div class="Litem"> 새상품 </div>
+                            <div> 29,000원</div>
+                        </li>
+                        <li class="book_info_li">
+                            <div class="Litem"> 판매가 </div>
+                            <div> <strong class="Ritem_big_font">{{ post.postPrice }}</strong>원<span class="Ritem_red_font">
+                                    </span>
+                                
+                            </div>
+                        </li>
+                        <li class="book_info_li">
+                            <div class="Litem"> 상품상태 </div>
+                            <div> <span class="Ritem_bold"> {{ post.postStatus }} </span> </div>
+                        </li>
+                        <li class="book_info_li">
+                            <div class="Litem"> 직거래 위치 </div>
+                            <div> {{ post.university }} </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="book_button_box">
+                    <button class="book_button buyitnow"> 판매자와 채팅 </button>
+                    <a href="/detail/attention/{{post.id}}"><button class="book_button attention"> 관심 </button></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="seller_content_box">
+            <div class="sub_title">중고상품 구매 유의사항</div>
+            <div class="seller_content_decription">
+                <p>{{ post.postContent }}</p>
+            </div>
+        </div>
+
+        <div class="seller_univ_box">
+            <div class="sub_title"> 대학 장터 안내 </div>
+            <div class="seller_univ_decription">
+                <table class="seller_univ_table">
+                    <tbody>
+                        <tr>
+                            <td class="univ_table_width univ_table1"> 대학교 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.university }} </td>
+                            <td class="univ_table_width univ_table1"> 학부 / 학과 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.department }} </td>
+                            <td class="univ_table_width univ_table1"> 사용년도 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.department }} - {{ post.User.department }} </td>
+                        </tr>
+                        <tr>
+                            <td class="univ_table_width univ_table1"> 과목명 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.department }} ({{ post.User.department }}) </td>
+                            <td class="univ_table_width univ_table1"> 교수명 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.department }} </td>
+                            <td class="univ_table_width univ_table1"> 학점 </td>
+                            <td class="univ_table_width univ_table2"> {{ post.User.department }} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="used_quality_box">
+            <div class="sub_title">품질 판정 가이드</div>
+            <div class="used_quality_decription">
+                <table class="used_quality_table">
+                    <tbody>
+                        <tr>
+                            <td class="table_15 table_name"> 품질등급 </td>
+                            <td class="table_16 table_name"> 현상태 </td>
+                            <td class="table_23 table_name"> 표지 </td>
+                            <td class="table_23 table_name"> 책등 / 책배 </td>
+                            <td class="table_23_ table_name"> 내부 / 제본상태 </td>
+                        </tr>
+                        {% if post.postStatus == '최상' %}
+                        <tr>
+                            <td class="table_15 text_center">
+                                <span class="used_quality_title2"> 최상 </span>
+                            </td>
+                            <td class="table_16"> 새것에 가까움 </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 변색 없음</li>
+                                        <li> 찢어진 흔적 없음 </li>
+                                        <li> 닳은 흔적 없음 </li>
+                                        <li> 낙서 없음 </li>
+                                        <li> 얼룩 없음 </li>
+                                        <li> 도서 겉표지 있음</li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 변색 없음</li>
+                                        <li> 닳은 흔적 없음 </li>
+                                        <li> 낙서 없음 </li>
+                                        <li> 얼룩 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23_">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 변색 없음</li>
+                                        <li> 낙서 없음 </li>
+                                        <li> 변형 없음 </li>
+                                        <li> 얼룩 없음 </li>
+                                        <li> 제본 탈착 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% if post.postStatus == '상' %}
+                        <tr>
+                            <td class="table_15 text_center">
+                                <span class="used_quality_title2"> 상 </span>
+                            </td>
+                            <td class="table_16"> 약간의 사용감은 있으나 깨끗한 책 </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 희미한 변색이나 작은 얼룩이 있음</li>
+                                        <li> 찢어진 흔적 없음 </li>
+                                        <li> 약간의 모서리 해짐 </li>
+                                        <li> 낙서 없음 </li>
+                                        <li> 도서 겉표지 있음</li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 희미한 변색이나 작은 얼룩이 있음</li>
+                                        <li> 약간의 닳은 흔적 있음 </li>
+                                        <li> 낙서 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23_">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 변색 없음</li>
+                                        <li> 낙서 없음 </li>
+                                        <li> 변형 없음 </li>
+                                        <li> 아주 약간의 접힌 흔적 있음 </li>
+                                        <li> 얼룩 없음 </li>
+                                        <li> 제본 탈착 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                        {% if post.postStatus == '중' %}
+                        <tr>
+                            <td class="table_15 text_center">
+                                <span class="used_quality_title2"> 중 </span>
+                            </td>
+                            <td class="table_16"> 사용감이 많으며 헌 느낌이 나는 책 </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 전체적인 변색 </li>
+                                        <li> 모서리 해짐 있음 </li>
+                                        <li> 2cm 이하의 찢어짐 </li>
+                                        <li> 오염 있음 </li>
+                                        <li> 낙서 있음 </li>
+                                        <li> 도서 겉표지 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 전체적인 변색 </li>
+                                        <li> 모서리 해짐 있음 </li>
+                                        <li> 오염 있음 </li>
+                                        <li> 낙서 있음 (이름 포함) </li>
+                                    </ul>
+                                </div>
+                            </td>
+                            <td class="table_23_">
+                                <div>
+                                    <ul class="talbe_ul">
+                                        <li> 변색 없음</li>
+                                        <li> 2cm 이하 찢어짐 있음 </li>
+                                        <li> 5쪽 이하의 필기 및 풀이 또는 밑줄 있음 </li>
+                                        <li> 얼룩 및 오염 있음 </li>
+                                        <li> 제본 탈착 없음 </li>
+                                        <li> 본문 읽기에 지장 없는 부록 없음 </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+
+
+        <div class="seller_info_box">
+            <div class="sub_title">판매자</div>
+            <div class="seller_info_decription">
+                <div> 안중원 </div>
+                <div class="seller_info_button_box">
+                    <a href="/list/{{post.UserId}}"><button class="icon_button view_all_seller_products"> 판매자 상품 모두 보기 </button></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="seller_info_box">
+            <div class="sub_title"> 댓글 </div>
+            {% for c in comments %}
+              {% if c.PostId == post.id %}
+                <p class="comment"><b>{{c.UserNick}}</b>   {{c.comment}}</p>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <form id="comment-form" action="/comment/{{post.id}}" method="post">
+            <input type="text" name="comment" placeholder="댓글">
+            <input type="hidden" name="postid" value="{{post.id}}">
+            <input type="hidden" name="usernick" value="{{user.userId}}">
+            <button class="btn" type="submit">확인</button>
+          </form>
+
+
+        <div class="bottom_section">
+            <div class="button_box2">
+                <a href="/list"><button class="btn">목록</button></a>
+                <button class="btn btn_top">↑ TOP</button>
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script src="/detail.js"></script>
+<script>
+    $(function(){
+    $('.btn_top').click(function(){
+        $('html').animate( {scrollTop: 0 }, 100);
+    });
+
+});
+function addBtnEvent(e){
+    var option = "width = 500, height = 600, location = no";
+    window.open('/chat', 'chat', option);
+  }
+  
+  var buy_btns = document.getElementsByClassName('book_button buyitnow');
+  
+  Array.from(buy_btns).forEach(function(element) {
+      element.addEventListener('click', addBtnEvent);
+  });
+</script>
+{% endblock %}

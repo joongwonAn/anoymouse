@@ -1,0 +1,66 @@
+<!-- 코드 작성자 : 안중원 -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <div class="all_book_box btn_inner">
+      <!--콘텐츠 헤더-->
+      <div class="container_content_title inner">
+        <h1 class="big_title"> {{title}} </h1>
+      </div>
+
+      <div class="inner">
+        <div class="content_box">
+          <ul class="registered_now_list">
+            
+            {% if categorys %}
+            {% for category in categorys %}
+            <li class="content_item registered_now_item">
+              <a href="/detail/{{category.postIdx}}">
+                <div class="a_box">
+                  <img src="/img/book_DataStructures.jpg">
+                  <p> <span>[{{posts[category.postIdx-1].postStatus}}]</span> {{posts[category.postIdx-1].postTitle}}</p>
+                  <p> 29000원 → <span>{{posts[category.postIdx-1].postPrice}}원</span></p>
+                  <p> {{posts[category.postIdx-1].User.university}} - {{posts[category.postIdx-1].User.department}} </p>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+            {% elseif favorites %}
+            {% for favorite in favorites %}
+            <li class="content_item registered_now_item">
+              <a href="/detail/{{favorite.postIdx}}">
+                <div class="a_box">
+                  <img src="/img/book_DataStructures.jpg">
+                  <p> <span>[{{posts[favorite.postIdx-1].postStatus}}]</span> {{posts[favorite.postIdx-1].postTitle}}</p>
+                  <p> 29000원 → <span>{{posts[favorite.postIdx-1].postPrice}}원</span></p>
+                  <p> {{posts[favorite.postIdx-1].User.university}} - {{posts[favorite.postIdx-1].User.department}} </p>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+            {% else %}
+            {% for post in posts %}
+            <li class="content_item registered_now_item">
+              <a href="/detail/{{post.id}}">
+                <div class="a_box">
+                  <img src="/img/book_DataStructures.jpg">
+                  <p> <span>[{{post.postStatus}}]</span> {{post.postTitle}}</p>
+                  <p> 29000원 → <span>{{post.postPrice}}원</span></p>
+                  <p> {{post.User.university}} - {{post.User.department}} </p>
+                </div>
+              </a>
+            </li>
+            {% endfor %}
+            {% endif %}
+
+          </ul>
+        </div>
+      </div>
+    </div>
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}

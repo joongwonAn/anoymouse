@@ -1,0 +1,121 @@
+<!-- 코드 작성자 : 안중원 -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="main_section">
+  <div class="back_main">
+    <img class="main_img_1" src="/logoimg/backmain_1.png" alt="back img1">
+  </div>
+
+  <!--메뉴를 제외한 메인 콘텐츠 구역-->
+  <div class="main_contents inner">
+    <!--배너 슬라이드-->
+    <div class="banner_slide">
+      <ul class="banner_img_list">
+        <li class="slide_content banner_img_item1">
+          <img class="banner_img" src="/logoimg/main_1.png" width="600px">
+        </li>
+        <li class="slide_content banner_img_item2">
+          <img class="banner_img" src="/logoimg/main_2.jpg" width="600px">
+        </li>
+        <li class="slide_content banner_img_item1">
+          <img class="banner_img" src="/logoimg/main_3.png" width="600px">
+        </li>
+      </ul>
+    </div>
+
+    <!--배너 문구-->
+    <div class="banner_txt_box">
+      <div class="txt_1">
+        <p class="big_txt">
+          대학장터를 통한 <br>
+          중고 거래
+        </p>
+        <p class="small_txt">내가 찾던 교재, 합리적인 가격으로 만나세요!</p>
+      </div>
+
+      <div class="txt_2">
+        <p class="big_txt">
+          전공 서적<br>
+          중고 거래
+        </p>
+        <p class="small_txt">내가 찾던 전공 교재 중고로 거래하세요!</p>
+      </div>
+
+      <div class="txt_3">
+        <p class="big_txt">
+          교양 서적 <br>
+          중고 구매
+        </p>
+        <p class="small_txt">대학장터를 통한 안전한 거래!</p>
+      </div>
+    </div>
+
+    <!--슬라이드 넘김-->
+    <div class="slide_pagination">
+
+      <div class="slide_num">
+        <span id="now_num">01</span>
+        <span id="total_num">| 03</span>
+      </div>
+
+      <div class="loading_bar">
+        <div class="bar bar_animation"></div>
+        <div class="bar_background"></div>
+      </div>
+
+      <div class="pagination_btn">
+        <button href="#" class="p_btn prev_btn">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+
+        <button href="#" class="p_btn next_btn">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- main section.end -->
+
+
+<!-- 지금 등록된 중고 교재 -->
+<div class="registered_now_box btn_inner">
+  <!--콘텐츠 헤더-->
+  <div class="container_content_title inner">
+    <h1 class="big_title"> 지금 등록된 중고 교재 </h1>
+        <a href="/list"> 모든 중교 교재 보기</a>
+  </div>
+
+  <div class="inner">
+    <div class="content_box">
+      <ul class="registered_now_list">
+        
+        {% for post in posts %}
+        <li class="content_item registered_now_item">
+          <a href="/detail/{{post.id}}">
+            <div class="a_box">
+              <img src="{{post.img}}">
+              <p> <span>[{{post.postStatus}}]</span> {{post.postTitle}}</p>
+              <p> 29000원 → <span>{{post.postPrice}}원</span></p>
+              <p> {{post.User.university}} - {{post.User.department}} </p>
+              <p> 관심 {{favorites[post.id-1].dataValues.usercount}}</p>
+            </div>
+          </a>
+        </li>
+        {% endfor %}
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</div>
+{% endblock %}
+
+
+{% block script %}
+<script src="/home.js"></script>
+{% endblock %}

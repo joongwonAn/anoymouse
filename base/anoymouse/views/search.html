@@ -1,0 +1,39 @@
+<!-- 코드 작성자 : 안중원 -->
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<!-- 모든 교재 -->
+<div class="all_book_box btn_inner">
+    <!--콘텐츠 헤더-->
+    <div class="container_content_title inner">
+        <h1 class="big_title"> 검색 </h1>
+    </div>
+
+    <div class="inner">
+        <div class="content_box">
+            <ul class="registered_now_list">
+
+                {% for post in posts %}
+                <li class="content_item registered_now_item">
+                    <a href="/detail/{{post.id}}">
+                        <div class="a_box">
+                            <img src="/img/book_DataStructures.jpg">
+                            <p> <span>[{{post.postStatus}}]</span> {{post.postTitle}}</p>
+                            <p> 29000원 → <span>{{post.postPrice}}원(59%)</span></p>
+                            <p> {{post.User.university}} - {{post.User.department}} </p>
+                            <p> 관심 {{favorites[post.id-1].dataValues.usercount}} • 채팅 </p>
+                        </div>
+                    </a>
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+{% block script %}
+{% endblock %}
